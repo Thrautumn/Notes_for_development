@@ -162,6 +162,14 @@ git remote add <repoName> <remoteRepoAddr>
 ### 推送
 
 ```bash
-git push <remoteRepoName> localBranchName [:remoteBranchName]
+git push <remoteRepoName> <localBranchName> [:remoteBranchName]
 ```
 > 如果本地分支名与远程仓库的待提交分支名一致，则无需写后面 `[]` 中的内容。
+
+
+我们可以也将远端和本地的分支进行绑定，绑定后就不需要指定分支名称了。这种情况适用于**一个本地仓库对应一个远程仓库**，即这个 Repository 是完全自用的，不存在协作。
+
+```bash
+git push --set-upstream <remoteRepoName> <localBranchName> :<remoteBranchName>
+git push origin
+```
