@@ -130,5 +130,38 @@ xxx/*.txt
 xxx/**/*.txt
 ```
 
+# Git 常用命令 —— 基于远程仓库
 
+## 配置 VPN
 
+首先为 Git 配置 VPN ，不然连不上 github 。
+
+对于 MinGW 版本 Git，底层依赖 .NET 的 ServicePointManager，它不支持 socks5 代理，需要把代理换成 HTTP/HTTPS 格式（Windows 原生支持）。
+
+```bash
+git config --global http.proxy http://127.0.0.1:7892
+git config --global https.proxy http://127.0.0.1:7892
+```
+
+**验证代理配置**：
+
+```bash
+git config --global --get http.proxy
+```
+
+## push
+
+push 即将本地仓库中的内容推送至远程仓库。
+
+### 连接远程仓库
+
+```bash
+git remote add <repoName> <remoteRepoAddr>
+```
+
+### 推送
+
+```bash
+git push <remoteRepoName> localBranchName [:remoteBranchName]
+```
+> 如果本地分支名与远程仓库的待提交分支名一致，则无需写后面 `[]` 中的内容。
